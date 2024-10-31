@@ -20,7 +20,7 @@ function About() {
     <section className="py-20 text-gray-800 bg-white" id="about">
       <div className="container flex flex-col items-center justify-center h-full px-8 mx-auto md:px-16 lg:px-24">
         <h2
-          className={`mb-12 text-4xl font-extrabold tracking-tight text-center ${
+          className={`mb-12 text-3xl font-extrabold tracking-tight text-center ${
             isTitleInView ? "opacity-100" : "opacity-0"
           }`}
           ref={titleRef}
@@ -46,7 +46,7 @@ function About() {
             </p>
             <div className="space-y-8">
               <h2
-                className={`text-4xl font-bold text-gray-800 shadow-md ${
+                className={`text-4xl font-bold text-gray-800 ${
                   isSkillsInView ? "opacity-100" : "opacity-0"
                 } ${isSkillsInView ? "translate-y-0" : "translate-y-5"}`}
                 ref={skillsRef}
@@ -64,7 +64,7 @@ function About() {
             </div>
             <div className="mt-12">
               {/* Education Section */}
-              <h1 className="text-2xl font-extrabold text-gray-800 shadow-md sm:text-3xl md:text-4xl">
+              <h1 className="text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
                 Education
               </h1>
               <div className="mt-6 space-y-6">
@@ -75,7 +75,7 @@ function About() {
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 />
                 <ResumeCard
-                  title="Software Engineering"
+                  title="Software Engineer"
                   institution="Beltei International University"
                   year="2024 - In Progress"
                   description="Specialized in Web Development, Data Structures, and Database Management."
@@ -83,7 +83,7 @@ function About() {
               </div>
 
               {/* Experience Section */}
-              <h1 className="mt-12 text-2xl font-extrabold text-gray-800 shadow-md sm:text-3xl md:text-4xl">
+              <h1 className="mt-12 text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
                 Experience
               </h1>
               <div className="mt-6 space-y-6">

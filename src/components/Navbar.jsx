@@ -57,7 +57,14 @@ function Navbar() {
             className="block font-medium text-gray-600 transition hover:text-blue-700"
             onClick={handleLinkClick}
           >
-            About Me
+            About
+          </a>
+          <a
+            href="#services"
+            className="block font-medium text-gray-600 transition hover:text-blue-700"
+            onClick={handleLinkClick}
+          >
+            Services
           </a>
           <a
             href="#portfolio"
@@ -153,7 +160,14 @@ function Navbar() {
             className="block font-medium text-gray-600 transition hover:text-blue-700"
             onClick={handleLinkClick}
           >
-            About Me
+            About
+          </a>
+          <a
+            href="#services"
+            className="block font-medium text-gray-600 transition hover:text-blue-700"
+            onClick={handleLinkClick}
+          >
+            Services
           </a>
           <a
             href="#portfolio"
