@@ -31,7 +31,7 @@ function About() {
         <div className="flex flex-col items-center md:items-center">
           <div className="w-full md:w-2/3">
             <p
-              className={`mb-8 text-xl text-center text-gray-700 lg:mb-16 sm:text-xl ${
+              className={`mb-8 text-xl font-light text-center text-gray-700 lg:mb-16 sm:text-xl ${
                 isParagraphInView ? "opacity-100" : "opacity-0"
               } ${isParagraphInView ? "translate-y-0" : "translate-y-5"}`}
               ref={paragraphRef}
@@ -60,8 +60,7 @@ function About() {
               <SkillProgress skill="PHP & Laravel" level="75%" />
               <SkillProgress skill="SQL & Mysql" level="70%" />
               <SkillProgress skill="Flutter" level="55%" />
-              <SkillProgress skill="Firebase" level="55%" />
-              <SkillProgress skill="Figma" level="65%" />
+              <SkillProgress skill="UX UI" level="65%" />
             </div>
             <div className="mt-12">
               {/* Education Section */}
@@ -76,9 +75,9 @@ function About() {
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 />
                 <ResumeCard
-                  title="Bachelor's Degree in Software Engineering"
+                  title="Software Engineering"
                   institution="Beltei International University"
-                  year="2024 - Third year in Progress"
+                  year="2024 - In Progress"
                   description="Specialized in Web Development, Data Structures, and Database Management."
                 />
               </div>
@@ -91,8 +90,8 @@ function About() {
                 <ResumeCard
                   title="Software Developer"
                   institution="Poscar Digital Co,.LTD."
-                  year="Valunteer 3 months - 2024"
-                  description="Build project full stack mobile appliction with team. Use tool flutter firebase figma(UX UI). Work hard researching document and analyze table database."
+                  year="3 months - 2024"
+                  description="Valunteer Build project full stack mobile appliction with team. Use tool flutter firebase figma(UX UI). Work hard researching document and analyze table database."
                 />
               </div>
             </div>
@@ -135,10 +134,10 @@ function ResumeCard({ title, institution, year, description }) {
     <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        <span className="text-sm font-medium text-gray-600">{year}</span>
+        <span className="text-sm font-light text-gray-600">{year}</span>
       </div>
       <p className="mt-2 text-gray-600">{institution}</p>
-      <p className="mt-4 text-gray-700">{description}</p>
+      <p className="mt-4 text-gray-700 font-light">{description}</p>
     </div>
   );
 }

@@ -57,7 +57,7 @@ function Portfolio() {
                             <div data-aos="zoom-in" key={project.id} className='overflow-hidden bg-white rounded-lg shadow-md'>
                                 <img src={project.image} className='object-cover w-full h-48' alt={project.title} />
                                 <div className='p-4'>
-                                    <h3 className='text-lg font-medium text-gray-500'>
+                                    <h3 className='text-lg font-light text-gray-500'>
                                         <a href={project.url} target='_blank' rel="noopener noreferrer" className='hover:underline'>
                                             {project.title}
                                         </a>
