@@ -1,8 +1,14 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { useInView } from "react-intersection-observer";
-import { FaLaptopCode, FaGraduationCap } from "react-icons/fa";
 
 function About() {
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+  
   const { ref: titleRef, inView: isTitleInView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -15,6 +21,7 @@ function About() {
     triggerOnce: false,
     threshold: 0.1,
   });
+
 
   return (
     <section className="py-20 text-gray-800 bg-white" id="about">
@@ -64,10 +71,10 @@ function About() {
             </div>
             <div className="mt-12">
               {/* Education Section */}
-              <h1 className="text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
+              <h1 data-aos="zoom-in-up" className="text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
                 Education
               </h1>
-              <div className="mt-6 space-y-6">
+              <div  className="mt-6 space-y-6">
                 <ResumeCard
                   title="High School Degree"
                   institution="Hunsen Srah Bonteay High School"
@@ -83,7 +90,7 @@ function About() {
               </div>
 
               {/* Experience Section */}
-              <h1 className="mt-12 text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
+              <h1 data-aos="zoom-in-up" className="mt-12 text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
                 Experience
               </h1>
               <div className="mt-6 space-y-6">
@@ -131,7 +138,7 @@ function SkillProgress({ skill, level }) {
 
 function ResumeCard({ title, institution, year, description }) {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div data-aos="zoom-in-up" className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
         <span className="text-sm font-light text-gray-600">{year}</span>

@@ -52,7 +52,7 @@ function Services() {
           web and mobile app development to creative design solutions.
         </p>
       </div>
-      <div className="grid gap-6 px-4 sm:grid-cols-1 lg:grid-cols-3 max-w-screen-lg mx-auto">
+      <div data-aos="zoom-in" className="grid gap-6 px-4 sm:grid-cols-1 lg:grid-cols-3 max-w-screen-lg mx-auto">
         {services.map((service) => (
           <div
             key={service.id}
