@@ -37,7 +37,7 @@ function Services() {
 
   return (
     <div className="text-gray-800 bg-white" id="services">
-      <div className="max-w-screen-md px-4 mx-auto">
+      <div className="max-w-screen-md px-4 py-5 mx-auto rounded-lg">
         <h2
           data-aos="zoom-in"
           className="mb-4 text-4xl font-extrabold tracking-tight text-center text-gray-900 sm:text-3xl"
@@ -57,7 +57,7 @@ function Services() {
           <div
             key={service.id}
             data-aos="fade-up"
-            className="flex flex-col items-center bg-white border border-gray-200 p-10 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="flex flex-col items-center bg-white border rounded-lg border-gray-200 p-10 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="relative flex items-center justify-center mb-4 py-5">
               {/* Solid background circle without blur */}
