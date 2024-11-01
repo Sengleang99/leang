@@ -29,7 +29,8 @@ function Footer() {
             <h2 className="mb-4 text-xl font-bold">Quick Links</h2>
             <ul className="space-y-2 text-gray-500 dark:text-gray-400">
             <li><a href="/" className="hover:underline">Home</a></li>
-              <li><a href="#about" className="hover:underline">About Me</a></li>
+              <li><a href="#about" className="hover:underline">About</a></li>
+              <li><a href="#services" className="hover:underline">Services</a></li>
               <li><a href="#portfolio" className="hover:underline">Portfolio</a></li>
               <li><a href="#contact" className="hover:underline">Contact</a></li>
             </ul>

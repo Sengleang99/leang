@@ -4,11 +4,10 @@ import "aos/dist/aos.css";
 import { useInView } from "react-intersection-observer";
 
 function About() {
-
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
-  
+
   const { ref: titleRef, inView: isTitleInView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -22,9 +21,8 @@ function About() {
     threshold: 0.1,
   });
 
-
   return (
-    <section className="py-20 text-gray-800 bg-white" id="about">
+    <section className="py-10 text-gray-800 bg-white " id="about">
       <div className="container flex flex-col items-center justify-center h-full px-8 mx-auto md:px-16 lg:px-24">
         <h2
           className={`mb-12 text-3xl font-extrabold tracking-tight text-center ${
@@ -71,16 +69,13 @@ function About() {
             </div>
             <div className="mt-12">
               {/* Education Section */}
-              <h1 data-aos="zoom-in-up" className="text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
+              <h1
+                data-aos="zoom-in-up"
+                className="text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl"
+              >
                 Education
               </h1>
-              <div  className="mt-6 space-y-6">
-                <ResumeCard
-                  title="High School Degree"
-                  institution="Hunsen Srah Bonteay High School"
-                  year="2018 - 2019"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                />
+              <div className="mt-6 space-y-6">
                 <ResumeCard
                   title="Software Engineer"
                   institution="Beltei International University"
@@ -90,7 +85,10 @@ function About() {
               </div>
 
               {/* Experience Section */}
-              <h1 data-aos="zoom-in-up" className="mt-12 text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl">
+              <h1
+                data-aos="zoom-in-up"
+                className="mt-12 text-2xl font-extrabold text-gray-800 sm:text-3xl md:text-4xl"
+              >
                 Experience
               </h1>
               <div className="mt-6 space-y-6">
@@ -98,7 +96,7 @@ function About() {
                   title="Software Developer"
                   institution="Poscar Digital Co,.LTD."
                   year="3 months - 2024"
-                  description="Valunteer Build project full stack mobile appliction with team. Use tool flutter firebase figma(UX UI). Work hard researching document and analyze table database."
+                  description="Volunteered in a team to build a full-stack mobile app, utilizing Flutter, Firebase, and Figma, with a focus on research and database analysis."
                 />
               </div>
             </div>
@@ -138,13 +136,16 @@ function SkillProgress({ skill, level }) {
 
 function ResumeCard({ title, institution, year, description }) {
   return (
-    <div data-aos="zoom-in-up" className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div
+      data-aos="zoom-in-up"
+      className="p-6 transition-shadow duration-300 bg-white rounded-lg shadow-lg hover:shadow-xl"
+    >
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
         <span className="text-sm font-light text-gray-600">{year}</span>
       </div>
       <p className="mt-2 text-gray-600">{institution}</p>
-      <p className="mt-4 text-gray-700 font-light">{description}</p>
+      <p className="mt-4 font-light text-gray-700">{description}</p>
     </div>
   );
 }
