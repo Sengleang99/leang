@@ -1,89 +1,81 @@
 import { motion } from "framer-motion";
-import { FiExternalLink, FiBriefcase } from "react-icons/fi";
+import { FiBriefcase } from "react-icons/fi";
 
-// Resume Card with upgraded animation & styling
-const ResumeCard = ({ title, institution, year, description }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{ scale: 1.02 }}
-      className="relative overflow-hidden transition-all duration-500 bg-white border border-blue-100 shadow-lg rounded-3xl hover:shadow-2xl group"
-    >
-      {/* Glowing background effect */}
-      <div className="absolute inset-0 z-0 transition-opacity duration-700 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-blue-100 via-white to-blue-200 blur-2xl" />
-
-      <div className="relative z-10 p-8 sm:p-10">
-        <div className="flex items-center mb-4 space-x-4">
-          <FiBriefcase className="text-blue-600 w-7 h-7" />
-          <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
-        </div>
-
-        <div className="flex items-center mb-6 space-x-3 text-gray-600">
-          <FiExternalLink className="w-5 h-5 text-blue-500" />
-          <span className="text-lg font-medium">{institution}</span>
-          <span className="text-gray-400">•</span>
-          <time className="font-semibold text-blue-600">{year}</time>
-        </div>
-
-        <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
-          {description}
-        </p>
-
-        {/* Underline animation bar */}
-        <motion.span
-          layoutId="underline"
-          className="block w-0 h-1 mt-6 transition-all duration-500 bg-blue-500 rounded-full group-hover:w-full"
-        />
-      </div>
-    </motion.div>
-  );
-};
-
+// Experience Data
 const experienceData = [
   {
     title: "Software Developer",
     institution: "Poscar Digital Co,.LTD.",
     year: "3 months - 2024",
     description:
-      "Volunteered in a team to build a full-stack mobile app, utilizing Flutter, Firebase, and Figma, with a focus on research and database analysis.",
+      "Volunteered in a team to build a full-stack mobile app using Flutter, Firebase, and Figma with a focus on research and database analysis.",
   },
   {
     title: "IT Projectionist",
     institution: "Legend Cinemas",
     year: "2021 - 2022",
     description:
-      "Maintained digital projectors, supported technical operations for daily screenings, tested sound and visual systems, and coordinated with suppliers to ensure high-quality movie experiences.",
+      "Maintained digital projectors, supported technical operations, tested audio/visual systems, and coordinated with suppliers for movie screenings.",
   },
 ];
 
+// Timeline Item
+const TimelineItem = ({ title, institution, year, description, isLast }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    className="relative pl-10 mb-16 group"
+  >
+    {/* Timeline dot */}
+    <div className="absolute left-0 w-4 h-4 transition-transform bg-blue-600 rounded-full shadow-lg group-hover:scale-110 top-2" />
+
+    {/* Connecting line */}
+    {!isLast && (
+      <span className="absolute w-1 h-full left-1 top-6 bg-gradient-to-b from-blue-400 to-blue-100" />
+    )}
+
+    {/* Card */}
+    <div className="p-6 transition-shadow bg-white border border-blue-100 shadow-md rounded-2xl hover:shadow-xl">
+      <h3 className="flex items-center text-lg font-semibold text-gray-800 md:text-xl">
+        <FiBriefcase className="mr-2 text-blue-600" />
+        {title}
+      </h3>
+      <div className="mt-1 text-sm font-medium text-gray-600 md:text-base">
+        {institution} • <span className="text-blue-500">{year}</span>
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-gray-700 md:text-base">
+        {description}
+      </p>
+    </div>
+  </motion.div>
+);
+
+// Main Experience Section
 const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="py-24 bg-gradient-to-b from-blue-50 via-white to-blue-100"
+      className="px-6 py-24 bg-gradient-to-b from-blue-50 via-white to-blue-100"
     >
-      <div className="container px-6 mx-auto max-w-7xl">
+      <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16 text-4xl font-extrabold tracking-tight text-center text-gray-900 sm:text-5xl"
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-4xl font-bold text-center text-gray-900"
         >
           Work Experience
         </motion.h2>
 
-        <div className="grid gap-12 sm:grid-cols-1 md:grid-cols-2">
-          {experienceData.map((item, index) => (
-            <ResumeCard
+        <div className="relative ml-4 border-l-2 border-blue-200 md:ml-6">
+          {experienceData.map((exp, index) => (
+            <TimelineItem
               key={index}
-              title={item.title}
-              institution={item.institution}
-              year={item.year}
-              description={item.description}
+              {...exp}
+              isLast={index === experienceData.length - 1}
             />
           ))}
         </div>
