@@ -1,222 +1,88 @@
 import React, { useState, useEffect } from "react";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import {
+  FaHome,
+  FaUser,
+  FaCode,
+  FaBriefcase,
+  FaEnvelope,
+  FaChevronDown,
+} from "react-icons/fa";
 
 function Navbar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLabel, setActiveLabel] = useState("");
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  // Handle scroll to add background color on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
+ const navItems = [
+  { id: "/", icon: <FaHome />, label: "Home" },
+  { id: "skills", icon: <FaCode />, label: "Skills" },
+  { id: "experience", icon: <FaBriefcase />, label: "Experience" },
+  { id: "contact", icon: <FaEnvelope />, label: "Contact" },
+];
+
+  const handleScrollToSection = (e, id) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 px-5 py-3 transition-all duration-300 lg:px-10 ${
-        isScrolled || isMobileMenuOpen ? "bg-white shadow-lg" : "bg-transparent"
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
+        isScrolled ? "shadow-xl rounded-full" : ""
       }`}
     >
-      <div className="container flex items-center justify-between mx-auto max-w-7xl">
-        {/* Logo */}
-        <div className="text-xl font-extrabold tracking-tight text-transparent bg-gradient-to-r from-blue-700 via-teal-600 to-pink-500 bg-clip-text md:text-2xl">
-          SengLeang
-        </div>
-
-        {/* Navigation Links (Desktop) */}
-        <div className="hidden space-x-6 md:flex">
-          <a
-            href="/"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            About
-          </a>
-          <a
-            href="#services"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Services
-          </a>
-          <a
-            href="#portfolio"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Portfolio
-          </a>
-          <a
-            href="#contact"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Contact
-          </a>
-        </div>
-
-        {/* Social Media Icons (Desktop) */}
-        <div className="hidden space-x-4 md:flex">
-          <a
-            href="https://web.facebook.com/yan.sengleang/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-blue-700 hover:scale-110"
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="https://www.instagram.com/_sengleang/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-pink-600 hover:scale-110"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/yan-sengleang-614a94277/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-blue-600 hover:scale-110"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://github.com/Sengleang99"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-black hover:scale-110"
-          >
-            <FaGithub />
-          </a>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div onClick={toggleMobileMenu} className="block md:hidden">
-          {!isMobileMenuOpen ? (
-            <HiMenuAlt3 className="text-2xl text-gray-700" />
-          ) : (
-            <HiX className="text-2xl text-gray-700" />
-          )}
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50"
-          onClick={toggleMobileMenu}
-        />
-      )}
-
-      {/* Mobile Menu Dropdown */}
       <div
-        className={`fixed top-0 left-0 z-50 w-60 md:w-1/2 h-full bg-white shadow-lg transition-transform duration-300 ${
-          isMobileMenuOpen
-            ? "transform translate-x-0"
-            : "transform -translate-x-full"
-        }`}
+        className={`flex items-center justify-center px-4 py-3 transition-all duration-300 rounded-full w-[90vw] max-w-[400px] mx-auto
+          ${
+            isScrolled
+              ? "bg-white/90 backdrop-blur-md border border-gray-200"
+              : "bg-white/80 backdrop-blur-sm border border-gray-100"
+          }`}
       >
-        <div className="px-6 py-4 text-xl font-extrabold tracking-tight text-transparent bg-gradient-to-r from-blue-700 via-teal-600 to-pink-500 bg-clip-text md:text-2xl">
-          SengLeang
+        {/* Always show nav items inline for all devices */}
+        <div className="flex items-center space-x-2">
+          {navItems.map((item) => (
+            <div key={item.id} className="relative group">
+              <a
+                href={`#${item.id}`}
+                onClick={(e) => handleScrollToSection(e, item.id)}
+                className="flex items-center justify-center w-12 h-12 text-gray-600 transition-all duration-300 rounded-full hover:bg-gray-100 hover:text-blue-600"
+                onMouseEnter={() => setActiveLabel(item.label)}
+                onMouseLeave={() => setActiveLabel("")}
+              >
+                <span className="text-xl">{item.icon}</span>
+              </a>
+
+              {/* Label on Hover */}
+              <div
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-2 transition-all duration-300 z-50 ${
+                  activeLabel === item.label
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-1"
+                }`}
+              >
+                <div className="relative px-3 py-1 text-sm font-medium text-white bg-gray-800 rounded-md whitespace-nowrap">
+                  {item.label}
+                  <div className="absolute top-0 w-2 h-2 transform rotate-45 -translate-x-1/2 -translate-y-1/2 bg-gray-800 left-1/2"></div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="px-6 py-4 space-y-4">
-          <a
-            href="/"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Home
-          </a>
-          <a
-            href="#about"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            About
-          </a>
-          <a
-            href="#services"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Services
-          </a>
-          <a
-            href="#portfolio"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Portfolio
-          </a>
-          <a
-            href="#contact"
-            className="block font-medium text-gray-600 transition hover:text-blue-700"
-            onClick={handleLinkClick}
-          >
-            Contact
-          </a>
-        </div>
-        <div className="flex justify-center py-4 space-x-4 bg-gray-100">
-          <a
-            href="https://web.facebook.com/yan.sengleang/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-blue-700 hover:scale-110"
-          >
-            <FaFacebook />
-          </a>
-          <a
-            href="https://www.instagram.com/_sengleang/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-pink-600 hover:scale-110"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/yan-sengleang-614a94277/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-blue-600 hover:scale-110"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://github.com/Sengleang99"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xl text-gray-600 transition duration-300 transform hover:text-black hover:scale-110"
-          >
-            <FaGithub />
-          </a>
+
+        {/* Dropdown Indicator */}
+        <div className="ml-2 text-gray-400">
+          <FaChevronDown className="text-sm" />
         </div>
       </div>
     </nav>

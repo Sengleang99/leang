@@ -1,94 +1,142 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from 'react-intersection-observer';
+import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { Typewriter } from "react-simple-typewriter";
 import Profile from "../assets/photo_2024-09-03_23-25-36.jpg";
 
 function Hero() {
-  const { ref: imgRef, inView: isImgInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
-  const { ref: titleRef, inView: isTitleInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
-  const { ref: spanRef, inView: isSpanInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
-  const { ref: paraRef, inView: isParaInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
-  const { ref: btn1Ref, inView: isBtn1InView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
-  const { ref: btn2Ref, inView: isBtn2InView } = useInView({
-    triggerOnce: false,
-    threshold: 0.1
-  });
+  const socialLinks = [
+    {
+      icon: <FaGithub size={20} />,
+      name: "GitHub",
+      url: "https://github.com/Sengleang99",
+      color: "hover:text-gray-800",
+    },
+    {
+      icon: <FaLinkedin size={20} />,
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/yan-sengleang-614a94277/",
+      color: "hover:text-blue-600",
+    },
+    {
+      icon: <FaInstagram size={20} />,
+      name: "Instagram",
+      url: "https://www.instagram.com/_sengleang/",
+      color: "hover:text-pink-600",
+    },
+    {
+      icon: <FaFacebook size={20} />,
+      name: "Facebook",
+      url: "https://web.facebook.com/yan.sengleang/",
+      color: "hover:text-blue-800",
+    },
+    {
+      icon: <HiOutlineMail size={20} />,
+      name: "Email",
+      url: "mailto:your-email@example.com",
+      color: "hover:text-red-500",
+    },
+  ];
 
   return (
-    <div className="container px-4 py-12 mx-auto text-center md:px-8 lg:px-16">
-      <motion.img 
-        src={Profile} 
-        alt="Profile Picture" 
-        className="object-cover w-48 h-48 mx-auto mb-8 border-4 border-white rounded-full shadow-lg"
-        ref={imgRef}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: isImgInView ? 1 : 0, scale: isImgInView ? 1 : 0.8 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      />
-      <motion.h1
-        className="mb-3 text-5xl font-extrabold text-center"
-        ref={titleRef}
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: isTitleInView ? 0 : -50, opacity: isTitleInView ? 1 : 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        Hello! {""}
-        <span className="mb-3 text-5xl font-extrabold text-center">I'm Sengleang</span>
-      </motion.h1>
-      <motion.span
-        className="mb-3 text-5xl font-extrabold text-center text-blue-800"
-        ref={spanRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isSpanInView ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-      >
-        Web & App Developer
-      </motion.span>
-      <motion.p
-        className="max-w-xl px-4 mx-auto mt-6 mb-8 font-light text-center text-gray-400 lg:mb-10 sm:text-xl"
-        ref={paraRef}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: isParaInView ? 1 : 0, y: isParaInView ? 0 : 20 }}
-        transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-      >
-        I specialize in building modern and responsive web applications that bring ideas to life.
-      </motion.p>
-      <div className="space-x-4">
-        <motion.button
-          className="px-6 py-3 text-blue-600 border border-blue-600 bg-white transition-transform duration-300 transform rounded-full shadow-lg hover:bg-blue-600 hover:text-white hover:scale-105"
-          ref={btn1Ref}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isBtn1InView ? 1 : 0, scale: isBtn1InView ? 1 : 0.8 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+    <div className="container px-4 py-12 sm:px-6 md:px-12 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50">
+      <div className="flex flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
+        {/* Left Text Section */}
+        <motion.div
+          className="text-center lg:text-left lg:w-1/2"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Contact Me
-        </motion.button>
-        <motion.button
-          className="px-6 py-3 text-pink-600 border border-pink-600 bg-white transition-transform duration-300 transform rounded-full shadow-lg hover:bg-pink-600 hover:text-white hover:scale-105"
-          ref={btn2Ref}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isBtn2InView ? 1 : 0, scale: isBtn2InView ? 1 : 0.8 }}
-          transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+          <motion.h1
+            className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Hi, I'm <span className="text-blue-600">Sengleang</span>
+          </motion.h1>
+
+          <motion.h2
+            className="mb-6 text-2xl font-bold text-transparent sm:text-3xl md:text-4xl bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Typewriter
+              words={["Software Developer|"]}
+              loop={true}
+              cursor
+              cursorStyle="|"
+              typeSpeed={80}
+              deleteSpeed={50}
+              delaySpeed={2000}
+            />
+          </motion.h2>
+
+          <motion.p
+            className="mb-8 text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            I build exceptional digital experiences using modern technologies,
+            focused on clean design and intuitive functionality.
+          </motion.p>
+
+          {/* Social Icons */}
+          <motion.div
+            className="flex justify-center space-x-4 lg:justify-start"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 text-gray-500 transition-all duration-300 rounded-full bg-gray-100 hover:bg-white ${link.color} hover:shadow-md`}
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 + index * 0.1 }}
+                aria-label={link.name}
+              >
+                {link.icon}
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Profile Image Section with Animation */}
+        <motion.div
+          className="relative w-full max-w-xs mx-auto sm:max-w-sm md:max-w-md lg:w-1/2"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            View Resume
-          </a>
-        </motion.button>
+          {/* Glowing pulse behind the photo */}
+          <motion.div
+            className="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-400 to-teal-400 opacity-60"
+            initial={{ scale: 0.9, opacity: 0.5 }}
+            animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
+          />
+
+          {/* Floating and hover-animated profile image */}
+          <motion.img
+            src={Profile}
+            alt="Sengleang - Software Developer"
+            className="relative z-10 object-cover w-full shadow-2xl cursor-pointer rounded-xl"
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.05, rotate: 3 }}
+          />
+        </motion.div>
       </div>
     </div>
   );
