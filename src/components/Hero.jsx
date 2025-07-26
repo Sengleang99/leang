@@ -40,7 +40,10 @@ function Hero() {
   ];
 
   return (
-    <div className="container px-4 py-12 sm:px-6 md:px-12 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <div
+      id="home"
+      className="container px-4 py-12 sm:px-6 md:px-12 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+    >
       <div className="flex flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
         {/* Left Text Section */}
         <motion.div
@@ -81,8 +84,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            I build exceptional digital experiences using modern technologies,
-            focused on clean design and intuitive functionality.
+            I am studying Software Engineering at Beltei International
+            University, with a focus on clean design develop analysis.
           </motion.p>
 
           {/* Social Icons */}

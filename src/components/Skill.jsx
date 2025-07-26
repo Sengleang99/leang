@@ -23,7 +23,7 @@ function Technology() {
   return (
     <section
       className="relative py-24 bg-gradient-to-b from-blue-50 via-white to-blue-50"
-      id="technology"
+      id="skill"
     >
       <div className="container relative z-10 px-5 mx-auto max-w-7xl">
         {/* Section Header */}

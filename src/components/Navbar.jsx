@@ -21,8 +21,8 @@ function Navbar() {
   }, []);
 
  const navItems = [
-  { id: "/", icon: <FaHome />, label: "Home" },
-  { id: "skills", icon: <FaCode />, label: "Skills" },
+  { id: "home", icon: <FaHome />, label: "Home" },
+  { id: "skill", icon: <FaCode />, label: "Skills" },
   { id: "experience", icon: <FaBriefcase />, label: "Experience" },
   { id: "contact", icon: <FaEnvelope />, label: "Contact" },
 ];
