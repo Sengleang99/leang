@@ -42,12 +42,12 @@ function Hero() {
   return (
     <div
       id="home"
-      className="container px-4 py-12 sm:px-6 md:px-12 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+      className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50"
     >
-      <div className="flex flex-col-reverse items-center justify-between gap-12 lg:flex-row lg:gap-20">
+      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-16 lg:flex-row lg:gap-20">
         {/* Left Text Section */}
         <motion.div
-          className="text-center lg:text-left lg:w-1/2"
+          className="w-full text-center lg:text-left lg:w-1/2"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -68,7 +68,7 @@ function Hero() {
             transition={{ delay: 0.4 }}
           >
             <Typewriter
-              words={["Software Developer|"]}
+              words={["SOFTWARE DEVELOPER|"]}
               loop={true}
               cursor
               cursorStyle="|"
@@ -90,7 +90,7 @@ function Hero() {
 
           {/* Social Icons */}
           <motion.div
-            className="flex justify-center space-x-4 lg:justify-start"
+            className="flex flex-wrap justify-center gap-4 lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -115,9 +115,9 @@ function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Profile Image Section with Animation */}
+        {/* Profile Image Section */}
         <motion.div
-          className="relative w-full max-w-xs mx-auto sm:max-w-sm md:max-w-md lg:w-1/2"
+          className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl lg:w-1/2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -130,11 +130,11 @@ function Hero() {
             transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
           />
 
-          {/* Floating and hover-animated profile image */}
+          {/* Animated profile image */}
           <motion.img
             src={Profile}
             alt="Sengleang - Software Developer"
-            className="relative z-10 object-cover w-full shadow-2xl cursor-pointer rounded-xl"
+            className="relative z-10 object-cover w-full h-auto shadow-2xl cursor-pointer rounded-xl"
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ scale: 1.05, rotate: 3 }}

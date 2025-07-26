@@ -42,7 +42,7 @@ function Navbar() {
       }`}
     >
       <div
-        className={`flex items-center justify-center px-4 py-3 transition-all duration-300 rounded-full w-[90vw] max-w-[400px] mx-auto
+        className={`flex items-center justify-center px-4 py-3 transition-all duration-300 rounded-full w-[90vw] max-w-[400px] mx-auto bg-gradient-to-b from-blue-100 via-white to-blue-100
           ${
             isScrolled
               ? "bg-white/90 backdrop-blur-md border border-gray-200"
@@ -50,7 +50,7 @@ function Navbar() {
           }`}
       >
         {/* Always show nav items inline for all devices */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 ">
           {navItems.map((item) => (
             <div key={item.id} className="relative group">
               <a
