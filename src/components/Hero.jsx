@@ -28,13 +28,13 @@ function Hero() {
     {
       icon: <FaFacebook size={20} />,
       name: "Facebook",
-      url: "https://web.facebook.com/yan.sengleang/",
+      url: "https://web.facebook.com/yan.sengleang",
       color: "hover:text-blue-800",
     },
     {
       icon: <HiOutlineMail size={20} />,
       name: "Email",
-      url: "mailto:your-email@example.com",
+      url: "sengleangyan@gmail.com",
       color: "hover:text-red-500",
     },
   ];
