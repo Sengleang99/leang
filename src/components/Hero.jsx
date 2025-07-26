@@ -68,7 +68,7 @@ function Hero() {
             transition={{ delay: 0.4 }}
           >
             <Typewriter
-              words={["SOFTWARE DEVELOPER|"]}
+              words={["SOFTWARE DEVELOPER|","|"]}
               loop={true}
               cursor
               cursorStyle="|"
