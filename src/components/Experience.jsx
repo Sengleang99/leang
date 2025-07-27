@@ -57,7 +57,7 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="px-6 py-24 bg-gradient-to-b from-blue-50 via-white to-blue-100"
+      className="px-6 py-24 bg-gradient-to-b from-blue-50 via-white to-blue-50"
     >
       <div className="max-w-4xl mx-auto">
         <motion.h2

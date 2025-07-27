@@ -2,14 +2,25 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// Import real logos from react-icons
+import {
+  SiFlutter,
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiLaravel,
+  SiMysql,
+  SiMongodb,
+} from "react-icons/si";
+
 const techSkills = [
-  { name: "Flutter", icon: "💙", level: 85 },
-  { name: "React.js", icon: "⚛️", level: 90 },
-  { name: "Node.js", icon: "🟢", level: 85 },
-  { name: "Express.js", icon: "🚂", level: 80 },
-  { name: "Laravel", icon: "🟥", level: 75 },
-  { name: "MySQL", icon: "🐬", level: 80 },
-  { name: "MongoDB", icon: "🍃", level: 78 },
+  { name: "Flutter", icon: <SiFlutter className="text-sky-500" />, level: 80 },
+  { name: "React.js", icon: <SiReact className="text-cyan-500" />, level: 80 },
+  { name: "Node.js", icon: <SiNodedotjs className="text-green-500" />, level: 85 },
+  { name: "Express.js", icon: <SiExpress className="text-gray-700" />, level: 80 },
+  { name: "Laravel", icon: <SiLaravel className="text-red-500" />, level: 75 },
+  { name: "MySQL", icon: <SiMysql className="text-blue-600" />, level: 80 },
+  { name: "MongoDB", icon: <SiMongodb className="text-green-600" />, level: 78 },
 ];
 
 function Technology() {

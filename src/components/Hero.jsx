@@ -42,7 +42,7 @@ function Hero() {
   return (
     <div
       id="home"
-      className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+      className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50"
     >
       <div className="flex flex-col-reverse items-center justify-between gap-12 mt-16 lg:flex-row lg:gap-20">
         {/* Left Text Section */}
@@ -84,7 +84,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            I am studying Software Engineering at Beltei International
+            I am study Software Engineering at Beltei International
             University, with a focus on clean design develop analysis.
           </motion.p>
 

@@ -37,9 +37,9 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+      className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-100"
     >
-      <div className="container px-5 mx-auto max-w-7xl">
+      <div className="container px-5 mx-auto max-w-7xl ">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -62,7 +62,7 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-3xl p-8 mx-auto bg-white shadow-sm rounded-xl md:p-10"
+          className="max-w-3xl p-8 mx-auto shadow-sm bg-gradient-to-b from-blue-50 via-white to-blue-50 rounded-xl md:p-10"
         >
           <motion.form variants={containerVariants} className="space-y-6">
             {/* Email Field */}
