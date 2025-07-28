@@ -68,7 +68,14 @@ function Hero() {
             transition={{ delay: 0.4 }}
           >
             <Typewriter
-              words={["SOFTWARE DEVELOPER|","|"]}
+              words={[
+                "SOFTWARE DEVELOPER|",
+                "|",
+                "UX/UI SPECIALIST|",
+                "|",
+                "DATA ANALYST|",
+                "|",
+              ]}
               loop={true}
               cursor
               cursorStyle="|"
@@ -84,8 +91,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            I am study Software Engineering at Beltei International
-            University, with a focus on clean design develop analysis.
+            I am study Software Engineering at Beltei International University,
+            with a focus on clean design develop analysis.
           </motion.p>
 
           {/* Social Icons */}
