@@ -68,8 +68,12 @@ function Hero() {
             transition={{ delay: 0.4 }}
           >
             <Typewriter
-              words={["SOFTWARE DEVELOPER", "UX/UI SPECIALIST", "DATA ANALYST"]}
-              loop={0}
+              words={[
+                "SOFTWARE DEVELOPER|",
+                "UX/UI SPECIALIST|",
+                "DATA ANALYST|",
+              ]}
+              loop={true}
               cursor
               cursorStyle="|"
               typeSpeed={100}
@@ -85,7 +89,8 @@ function Hero() {
             transition={{ delay: 0.6 }}
           >
             I am studying Software Engineering at Beltei International
-            University, focusing on clean design, development, and data analysis.
+            University, focusing on clean design, development, and data
+            analysis.
           </motion.p>
 
           {/* Social Icons */}
