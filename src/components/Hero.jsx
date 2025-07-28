@@ -44,7 +44,7 @@ function Hero() {
       id="home"
       className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50"
     >
-      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-10 lg:flex-row lg:gap-20">
+      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-16 lg:flex-row lg:gap-20 mt">
         {/* Text Section */}
         <motion.div
           className="w-full text-center lg:text-left lg:w-1/2"
@@ -70,8 +70,11 @@ function Hero() {
             <Typewriter
               words={[
                 "SOFTWARE DEVELOPER|",
+                "|",
                 "UX/UI SPECIALIST|",
+                "|",
                 "DATA ANALYST|",
+                "|",
               ]}
               loop={true}
               cursor
