@@ -57,15 +57,15 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="px-6 py-24 bg-gradient-to-b from-blue-50 via-white to-blue-50"
+      className="px-6 py-10 bg-gradient-to-b from-blue-50 via-white to-blue-50"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto mt-5">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-16 text-4xl font-bold text-center text-gray-900"
+          className="mb-16 text-4xl font-bold text-center text-blue-600"
         >
           Work Experience
         </motion.h2>

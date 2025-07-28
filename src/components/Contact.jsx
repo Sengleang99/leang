@@ -37,7 +37,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-100"
+      className="py-5 bg-gradient-to-b from-blue-50 via-white to-blue-100"
     >
       <div className="container px-5 mx-auto max-w-7xl ">
         {/* Header */}
