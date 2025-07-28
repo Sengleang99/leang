@@ -34,7 +34,7 @@ function Hero() {
     {
       icon: <HiOutlineMail size={20} />,
       name: "Email",
-      url: "sengleangyan@gmail.com",
+      url: "mailto:sengleangyan@gmail.com",
       color: "hover:text-red-500",
     },
   ];
@@ -44,8 +44,8 @@ function Hero() {
       id="home"
       className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50"
     >
-      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-16 lg:flex-row lg:gap-20">
-        {/* Left Text Section */}
+      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-10 lg:flex-row lg:gap-20">
+        {/* Text Section */}
         <motion.div
           className="w-full text-center lg:text-left lg:w-1/2"
           initial={{ opacity: 0, x: -50 }}
@@ -53,7 +53,7 @@ function Hero() {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+            className="mb-4 font-bold text-gray-900 text-[clamp(2rem,6vw,3.5rem)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -62,37 +62,30 @@ function Hero() {
           </motion.h1>
 
           <motion.h2
-            className="mb-6 text-2xl font-bold text-transparent sm:text-3xl md:text-4xl bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-sm"
+            className="mb-6 font-bold text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-sm text-[clamp(1.5rem,5vw,2.5rem)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
             <Typewriter
-              words={[
-                "SOFTWARE DEVELOPER|",
-                "|",
-                "UX/UI SPECIALIST|",
-                "|",
-                "DATA ANALYST|",
-                "|",
-              ]}
-              loop={true}
+              words={["SOFTWARE DEVELOPER", "UX/UI SPECIALIST", "DATA ANALYST"]}
+              loop={0}
               cursor
               cursorStyle="|"
-              typeSpeed={80}
-              deleteSpeed={50}
-              delaySpeed={2000}
+              typeSpeed={100}
+              deleteSpeed={60}
+              delaySpeed={1500}
             />
           </motion.h2>
 
           <motion.p
-            className="mb-8 text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl"
+            className="mb-8 text-gray-600 text-[clamp(1rem,2.5vw,1.25rem)] leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            I am study Software Engineering at Beltei International University,
-            with a focus on clean design develop analysis.
+            I am studying Software Engineering at Beltei International
+            University, focusing on clean design, development, and data analysis.
           </motion.p>
 
           {/* Social Icons */}
@@ -122,22 +115,19 @@ function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Profile Image Section */}
+        {/* Profile Section */}
         <motion.div
-          className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-[400px] lg:w-1/2"
+          className="relative w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-[400px] lg:w-1/2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Glowing pulse behind the photo */}
           <motion.div
             className="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-400 to-teal-400 opacity-60"
             initial={{ scale: 0.9, opacity: 0.5 }}
             animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.5, 0.8, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
           />
-
-          {/* Animated profile image */}
           <motion.img
             src={Profile}
             alt="Sengleang - Software Developer"
