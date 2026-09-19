@@ -20,14 +20,14 @@ const experienceData = [
       "Developed and maintained mobile financial application features, integrating secure API frameworks, database operations, and intuitive user interfaces.",
     technologies: ["Flutter", "Vue.js", "Magic API", "MySQL", "Figma"],
   },
-  {
-    title: "Application Support & Developer Intern",
-    institution: "Poscar Digital Co., LTD",
-    year: "March 2024 - April 2024",
-    description:
-      "Collaborated on mobile application feature prototyping, user support, bug fixing, and cloud database integrations.",
-    technologies: ["Flutter", "Firebase", "Figma"],
-  },
+  // {
+  //   title: "Application Support & Developer Intern",
+  //   institution: "Poscar Digital Co., LTD",
+  //   year: "March 2024 - April 2024",
+  //   description:
+  //     "Collaborated on mobile application feature prototyping, user support, bug fixing, and cloud database integrations.",
+  //   technologies: ["Flutter", "Firebase", "Figma"],
+  // },
 ];
 
 // Timeline Item
