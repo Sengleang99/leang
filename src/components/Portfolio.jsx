@@ -1,177 +1,125 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
-import { SiFlutter, SiFirebase, SiFigma, SiReact, SiNodedotjs, SiPhp, SiMysql } from 'react-icons/si';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiExternalLink, FiArrowRight } from "react-icons/fi";
 
-// Project images
-import ProjectImage from "../assets/f8c12fd0ad6f7c09576ffef2de8b33d5.png";
-import Data_Analytic_Image from "../assets/image.png";
-import folio from "../assets/Screenshot 2024-09-05 170105.png";
-import portal from "../assets/portal.png";
-import zando from "../assets/Screenshot 2024-09-05 171654.png";
-import pos from "../assets/Screenshot 2024-09-05 180526.png";
-import photo from "../assets/photo.png";
-import news from "../assets/news.png";
+// Project assets
+import kasCambodia from "../assets/kascambodia.png";
+import realEstate from "../assets/real-estate.png"
 
-const techIcons = {
-  react: <SiReact className="text-blue-500" />,
-  node: <SiNodedotjs className="text-green-500" />,
-  flutter: <SiFlutter className="text-blue-400" />,
-  firebase: <SiFirebase className="text-yellow-500" />,
-  figma: <SiFigma className="text-pink-500" />,
-  php: <SiPhp className="text-purple-500" />,
-  mysql: <SiMysql className="text-blue-600" />
-};
+const projectsData = [
+  {
+    id: 1,
+    title: "Kas Cambodia",
+    category: "Full Stack",
+    image: kasCambodia,
+    liveUrl: "https://www.kascambodia.com/",
+  },
+  {
+    id: 2,
+    title: "UX/UI Real Estate",
+    category: "UX/UI",
+    image: realEstate,
+    liveUrl: "",
+  }
+];
+
 
 function Portfolio() {
-  const [showAll, setShowAll] = useState(false);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  }, []);
-
-  const projects = [
-    { 
-      id: 1, 
-      title: 'Fullstack POS System', 
-      image: pos, 
-      url: '#',
-      github: '#',
-      tech: ['react', 'node', 'mysql']
-    },
-    { 
-      id: 2, 
-      title: 'Student Portal', 
-      image: portal, 
-      url: '#',
-      github: '#',
-      tech: ['php', 'mysql']
-    },
-    { 
-      id: 3, 
-      title: 'New website', 
-      image: news, 
-      url: '#',
-      github: '#',
-      tech: ['php', 'mysql']
-    },    
-  ];
-
-  const visibleProjects = showAll ? projects : projects.slice(0, 6);
+  const filteredProjects = projectsData;
 
   return (
-    <section id="portfolio" className="py-20 bg-gradient-to-b from-gray-50 to-gray-100">
-      <div className="container px-5 mx-auto max-w-7xl">
-        {/* Header */}
+    <section
+      id="projects"
+      className="relative py-24 bg-gradient-to-b from-blue-50 via-white to-blue-50/60 overflow-hidden"
+    >
+      {/* Decorative background blurs */}
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container relative px-5 mx-auto max-w-7xl">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
         >
-          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800 md:text-5xl">
-            My Portfolio
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-700 to-blue-900 md:text-5xl">
+            Featured Projects
           </h2>
-          <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-600">
-            Explore my latest projects. Click to view live demos and case studies.
+          <p className="max-w-2xl mx-auto mt-4 text-base md:text-lg text-gray-600">
+            Here are some of my key projects:
           </p>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
-            {visibleProjects.map((project) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ y: -5, scale: 1.03 }}
-                className="overflow-hidden transition-shadow duration-500 bg-white shadow-lg cursor-pointer rounded-2xl hover:shadow-2xl"
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="group relative rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-200/80 transition-all duration-500 aspect-[16/11] bg-slate-900"
               >
-                <div className="relative overflow-hidden group rounded-2xl">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="object-cover w-full transition-transform duration-500 h-52 rounded-t-2xl group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 flex items-end p-5 transition-opacity duration-500 opacity-0 bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-100 rounded-t-2xl">
-                    <div className="flex space-x-3">
-                      <a 
-                        href={project.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-10 h-10 transition-colors bg-white rounded-full hover:bg-blue-100"
-                        aria-label="Live Demo"
-                      >
-                        <FiExternalLink className="text-gray-800" />
-                      </a>
-                      {project.github && (
-                        <a 
-                          href={project.github} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center w-10 h-10 transition-colors bg-white rounded-full hover:bg-blue-100"
-                          aria-label="GitHub Repository"
-                        >
-                          <FiGithub className="text-gray-800" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                {/* Project Image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
+                />
 
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-300 cursor-pointer hover:text-blue-600">
-                    <a 
-                      href={project.url} 
-                      target="_blank" 
+                {/* Overlay shown ONLY on hover: Live View button at top-right, Title at bottom-left */}
+                <div className="absolute inset-0 z-20 flex flex-col justify-between p-6 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-slate-950/60 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                  {/* Top Right: Live View Button (+ GitHub code) */}
+                  <div className="flex items-center justify-end gap-2 w-full transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block"
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs md:text-sm font-semibold text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg shadow-blue-500/40 hover:from-blue-500 hover:to-indigo-500 hover:scale-105 active:scale-95"
+                      aria-label={`Live view of ${project.title}`}
                     >
-                      {project.title}
+                      <FiExternalLink className="w-3.5 h-3.5" />
+                      <span>Live View</span>
                     </a>
-                  </h3>
-                  
-                  {project.tech.length > 0 && (
-                    <div className="flex mt-3 space-x-3 text-3xl text-gray-700">
-                      {project.tech.map((tech) => (
-                        <span key={tech} title={tech}>
-                          {techIcons[tech]}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                  </div>
+
+                  {/* Bottom Left: Title of Project */}
+                  <div className="text-left w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-md">
+                      {project.title}
+                    </h3>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        {/* Show More Button */}
-        {projects.length > 6 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center mt-12"
+        {/* Bottom CTA / See All Projects */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-col items-center justify-center mt-16 text-center"
+        >
+          <a
+            href="https://github.com/Sengleang99?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-full shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105 active:scale-95"
+            aria-label="See all projects on GitHub"
           >
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="px-8 py-3 font-medium text-white transition-all duration-300 transform bg-blue-600 rounded-full hover:bg-blue-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
-              {showAll ? 'Show Less' : 'View All Projects'}
-            </button>
-          </motion.div>
-        )}
+            <span>See All Projects</span>
+            <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

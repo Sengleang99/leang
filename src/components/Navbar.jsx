@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
   FaHome,
-  FaUser,
   FaCode,
   FaBriefcase,
   FaEnvelope,
-  FaChevronDown,
+  FaLaptopCode,
 } from "react-icons/fa";
 
 function Navbar() {
@@ -20,12 +19,13 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
- const navItems = [
-  { id: "home", icon: <FaHome />, label: "Home" },
-  { id: "skill", icon: <FaCode />, label: "Skills" },
-  { id: "experience", icon: <FaBriefcase />, label: "Experience" },
-  { id: "contact", icon: <FaEnvelope />, label: "Contact" },
-];
+  const navItems = [
+    { id: "home", icon: <FaHome />, label: "Home" },
+    { id: "skill", icon: <FaCode />, label: "Skills" },
+    { id: "experience", icon: <FaBriefcase />, label: "Experience" },
+    { id: "projects", icon: <FaLaptopCode />, label: "Projects" },
+    { id: "contact", icon: <FaEnvelope />, label: "Contact" },
+  ];
 
   const handleScrollToSection = (e, id) => {
     e.preventDefault();
@@ -37,16 +37,14 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-xl rounded-full" : ""
-      }`}
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ${isScrolled ? "shadow-xl rounded-full" : ""
+        }`}
     >
       <div
         className={`flex items-center justify-center px-4 py-3 transition-all duration-300 rounded-full w-[90vw] max-w-[300px] mx-auto bg-white
-          ${
-            isScrolled
-              ? "bg-white/90 backdrop-blur-md border border-gray-200"
-              : "bg-white/80 backdrop-blur-sm border border-gray-100"
+          ${isScrolled
+            ? "bg-white/90 backdrop-blur-md border border-gray-200"
+            : "bg-white/80 backdrop-blur-sm border border-gray-100"
           }`}
       >
         {/* Always show nav items inline for all devices */}
@@ -65,11 +63,10 @@ function Navbar() {
 
               {/* Label on Hover */}
               <div
-                className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-2 transition-all duration-300 z-50 ${
-                  activeLabel === item.label
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-1"
-                }`}
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 pt-2 transition-all duration-300 z-50 ${activeLabel === item.label
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-1"
+                  }`}
               >
                 <div className="relative px-3 py-1 text-sm font-medium text-white bg-gray-800 rounded-md whitespace-nowrap">
                   {item.label}
