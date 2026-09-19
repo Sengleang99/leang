@@ -1,95 +1,107 @@
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-// Import real logos from react-icons
+import React from "react";
+import { motion } from "framer-motion";
 import {
-  SiFlutter,
-  SiReact,
-  SiNodedotjs,
+  SiNextdotjs,
   SiExpress,
-  SiLaravel,
+  SiFlutter,
   SiMysql,
   SiMongodb,
+  SiDocker,
+  SiRedis,
+  SiGithub,
 } from "react-icons/si";
 
-const techSkills = [
-  { name: "Flutter", icon: <SiFlutter className="text-sky-500" />, level: 80 },
-  { name: "React.js", icon: <SiReact className="text-cyan-500" />, level: 80 },
-  { name: "Node.js", icon: <SiNodedotjs className="text-green-500" />, level: 85 },
-  { name: "Express.js", icon: <SiExpress className="text-gray-700" />, level: 80 },
-  { name: "Laravel", icon: <SiLaravel className="text-red-500" />, level: 75 },
-  { name: "MySQL", icon: <SiMysql className="text-blue-600" />, level: 80 },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-600" />, level: 78 },
+const row1Skills = [
+  { name: "Next.js", icon: <SiNextdotjs className="text-gray-900" /> },
+  { name: "Express", icon: <SiExpress className="text-gray-800" /> },
+  { name: "Flutter", icon: <SiFlutter className="text-sky-500" /> },
+  { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+];
+
+const row2Skills = [
+  { name: "MongoDB", icon: <SiMongodb className="text-emerald-600" /> },
+  { name: "Docker", icon: <SiDocker className="text-blue-500" /> },
+  { name: "Redis", icon: <SiRedis className="text-red-600" /> },
+  { name: "GitHub", icon: <SiGithub className="text-gray-900" /> },
 ];
 
 function Technology() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-  }, []);
-
   return (
-    <section
-      className="relative bg-gradient-to-b from-blue-50 via-white to-blue-50"
-      id="skill"
-    >
-      <div className="container relative z-10 px-5 mx-auto max-w-7xl">
+    <section id="skill" className="relative py-20 bg-white overflow-hidden">
+      <div className="container px-5 mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="mb-16 text-center" data-aos="fade-down">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800 md:text-5xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-700 to-blue-900 md:text-5xl">
             Tech Stack
           </h2>
-          <p
-            className="mt-4 text-lg text-gray-600"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            Technologies I work with daily
+          <p className="max-w-2xl mx-auto mt-4 text-base md:text-lg text-gray-600">
+            Frameworks and technologies I specialize in
           </p>
+        </motion.div>
+      </div>
+
+      {/* Two-Row Slider with Gradient Edge Masks */}
+      <div className="relative w-full overflow-hidden py-2">
+        {/* Left Gradient Fade Mask */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-r from-white to-transparent z-10" />
+
+        {/* Right Gradient Fade Mask */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-36 bg-gradient-to-l from-white to-transparent z-10" />
+
+        {/* Slider Row 1: Sliding Left */}
+        <div className="animate-marquee flex items-center gap-6 py-3">
+          {[
+            ...row1Skills,
+            ...row1Skills,
+            ...row1Skills,
+            ...row1Skills,
+            ...row1Skills,
+            ...row1Skills,
+          ].map((tech, index) => (
+            <div
+              key={`r1-${index}`}
+              className="flex items-center gap-3.5 px-6 py-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 hover:scale-105 select-none cursor-pointer"
+            >
+              <span className="text-3xl sm:text-4xl transition-transform duration-300">
+                {tech.icon}
+              </span>
+              <span className="text-sm sm:text-base font-semibold text-gray-800 whitespace-nowrap">
+                {tech.name}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {techSkills.map((skill, index) => (
+        {/* Slider Row 2: Sliding Right (Reverse) */}
+        <div className="animate-marquee-reverse flex items-center gap-6 py-3">
+          {[
+            ...row2Skills,
+            ...row2Skills,
+            ...row2Skills,
+            ...row2Skills,
+            ...row2Skills,
+            ...row2Skills,
+          ].map((tech, index) => (
             <div
-              key={skill.name}
-              data-aos="zoom-in-up"
-              data-aos-delay={100 + index * 80}
-              className="flex flex-col items-center p-6 transition-transform duration-300 transform bg-white border border-transparent shadow-lg rounded-2xl hover:-translate-y-1 group hover:border-blue-200"
+              key={`r2-${index}`}
+              className="flex items-center gap-3.5 px-6 py-4 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 hover:scale-105 select-none cursor-pointer"
             >
-              <span className="mb-3 text-4xl transition-transform duration-300 group-hover:scale-110">
-                {skill.icon}
+              <span className="text-3xl sm:text-4xl transition-transform duration-300">
+                {tech.icon}
               </span>
-              <h3 className="text-lg font-semibold text-gray-800">
-                {skill.name}
-              </h3>
-
-              {/* Animated Meter */}
-              <div className="w-full mt-4">
-                <div className="w-full h-2 overflow-hidden bg-gray-200 rounded-full">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 animate-skill"
-                    style={{
-                      width: `${skill.level}%`,
-                      animationDelay: `${index * 0.2}s`,
-                    }}
-                  ></div>
-                </div>
-                <span className="block mt-1 text-xs font-medium text-right text-gray-500">
-                  {skill.level}%
-                </span>
-              </div>
+              <span className="text-sm sm:text-base font-semibold text-gray-800 whitespace-nowrap">
+                {tech.name}
+              </span>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Floating Blobs for decoration */}
-      <div className="absolute w-40 h-40 bg-blue-400 rounded-full -top-10 -left-10 opacity-10 blur-2xl animate-float-slow"></div>
-      <div className="absolute bottom-0 right-0 bg-indigo-500 rounded-full w-52 h-52 opacity-10 blur-3xl animate-float"></div>
     </section>
   );
 }

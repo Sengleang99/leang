@@ -41,24 +41,24 @@ function Navbar() {
         }`}
     >
       <div
-        className={`flex items-center justify-center px-4 py-3 transition-all duration-300 rounded-full w-[90vw] max-w-[300px] mx-auto bg-white
+        className={`flex items-center justify-center px-3 sm:px-4 py-2 sm:py-2.5 transition-all duration-300 rounded-full w-auto max-w-[95vw] mx-auto bg-white
           ${isScrolled
             ? "bg-white/90 backdrop-blur-md border border-gray-200"
             : "bg-white/80 backdrop-blur-sm border border-gray-100"
           }`}
       >
         {/* Always show nav items inline for all devices */}
-        <div className="flex items-center space-x-2 ">
+        <div className="flex items-center space-x-1 sm:space-x-2">
           {navItems.map((item) => (
             <div key={item.id} className="relative group">
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleScrollToSection(e, item.id)}
-                className="flex items-center justify-center w-12 h-12 text-gray-600 transition-all duration-300 rounded-full hover:bg-gray-100 hover:text-blue-600"
+                className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 text-gray-600 transition-all duration-300 rounded-full hover:bg-gray-100 hover:text-blue-600"
                 onMouseEnter={() => setActiveLabel(item.label)}
                 onMouseLeave={() => setActiveLabel("")}
               >
-                <span className="text-xl">{item.icon}</span>
+                <span className="text-lg sm:text-xl">{item.icon}</span>
               </a>
 
               {/* Label on Hover */}

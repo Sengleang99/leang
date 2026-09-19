@@ -42,9 +42,9 @@ function Hero() {
   return (
     <div
       id="home"
-      className="px-4 py-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50"
+      className="px-4 pt-24 pb-12 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:py-20 bg-white"
     >
-      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-16 lg:flex-row lg:gap-20 mt">
+      <div className="flex flex-col-reverse items-center justify-between gap-12 mt-4 sm:mt-8 lg:flex-row lg:gap-20">
         {/* Text Section */}
         <motion.div
           className="w-full text-center lg:text-left lg:w-1/2"

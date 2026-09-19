@@ -37,7 +37,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="py-5 bg-gradient-to-b from-blue-50 via-white to-blue-100"
+      className="py-16 bg-white"
     >
       <div className="container px-5 mx-auto max-w-7xl ">
         {/* Header */}
@@ -62,7 +62,7 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-3xl p-8 mx-auto shadow-sm bg-gradient-to-b from-blue-50 via-white to-blue-50 rounded-xl md:p-10"
+          className="max-w-3xl p-6 sm:p-8 md:p-10 mx-auto bg-white border border-gray-200/80 shadow-sm rounded-2xl"
         >
           <motion.form variants={containerVariants} className="space-y-6">
             {/* Email Field */}
@@ -74,7 +74,7 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full py-3 pl-10 pr-4 text-gray-700 transition-all duration-300 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full py-3.5 pl-10 pr-4 text-gray-700 transition-all duration-300 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Your email address"
                   required
                 />
@@ -90,7 +90,7 @@ function Contact() {
                 <input
                   type="text"
                   id="subject"
-                  className="w-full py-3 pl-10 pr-4 text-gray-700 transition-all duration-300 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full py-3.5 pl-10 pr-4 text-gray-700 transition-all duration-300 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="What's this about?"
                   required
                 />
@@ -102,7 +102,7 @@ function Contact() {
               <textarea
                 id="message"
                 rows="6"
-                className="w-full px-4 py-3 text-gray-700 transition-all duration-300 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3.5 text-gray-700 transition-all duration-300 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Your message..."
               ></textarea>
             </motion.div>
@@ -115,7 +115,7 @@ function Contact() {
             >
               <button
                 type="submit"
-                className="flex items-center justify-center w-full px-6 py-3 text-lg font-medium text-white transition-all duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-700 md:w-auto hover:shadow-md"
+                className="flex items-center justify-center w-full px-8 py-3.5 text-base font-semibold text-white transition-all duration-300 transform bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-500 hover:to-indigo-500 md:w-auto shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
               >
                 <FiSend className="mr-2" />
                 Send Message
