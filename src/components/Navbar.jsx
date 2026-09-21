@@ -24,7 +24,7 @@ function Navbar() {
     { id: "home", icon: <FaHome />, label: "Home" },
     { id: "skill", icon: <FaCode />, label: "Skills" },
     { id: "experience", icon: <FaBriefcase />, label: "Experience" },
-    { id: "education", icon: <FaGraduationCap />, label: "Education" },
+    // { id: "education", icon: <FaGraduationCap />, label: "Education" },
     { id: "projects", icon: <FaLaptopCode />, label: "Projects" },
     { id: "contact", icon: <FaEnvelope />, label: "Contact" },
   ];
