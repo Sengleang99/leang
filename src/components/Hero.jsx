@@ -1,12 +1,23 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTelegram} from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { Typewriter } from "react-simple-typewriter";
+import { Typewriter, Cursor } from "react-simple-typewriter";
 import Profile from "../assets/photo_2024-09-03_23-25-36.jpg";
 
 function Hero() {
   const socialLinks = [
+    {
+      icon: <FaTelegram size={20} />,
+      name: "Telegram",
+      url: "https://t.me/Sengleangyan",
+      color: "hover:text-blue-600",
+    },
+     {
+      icon: <HiOutlineMail size={20} />,
+      name: "Email",
+      url: "mailto:sengleangyan@gmail.com",
+      color: "hover:text-red-500",
+    },
     {
       icon: <FaGithub size={20} />,
       name: "GitHub",
@@ -19,24 +30,7 @@ function Hero() {
       url: "https://www.linkedin.com/in/yan-sengleang-614a94277/",
       color: "hover:text-blue-600",
     },
-    {
-      icon: <FaInstagram size={20} />,
-      name: "Instagram",
-      url: "https://www.instagram.com/_sengleang/",
-      color: "hover:text-pink-600",
-    },
-    {
-      icon: <FaFacebook size={20} />,
-      name: "Facebook",
-      url: "https://web.facebook.com/yan.sengleang",
-      color: "hover:text-blue-800",
-    },
-    {
-      icon: <HiOutlineMail size={20} />,
-      name: "Email",
-      url: "mailto:sengleangyan@gmail.com",
-      color: "hover:text-red-500",
-    },
+   
   ];
 
   return (
@@ -58,31 +52,28 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Hi, I'm <span className="text-blue-600">Sengleang</span>
+            Hi, I&apos;m <span className="text-blue-600">Sengleang</span>
           </motion.h1>
 
           <motion.h2
-            className="mb-6 font-bold text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-sm text-[clamp(1.5rem,5vw,2.5rem)]"
+            className="mb-6 font-bold text-[clamp(1.5rem,5vw,2.5rem)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Typewriter
-              words={[
-                "SOFTWARE DEVELOPER|",
-                "|",
-                "UX/UI SPECIALIST|",
-                "|",
-                "DATA ANALYST|",
-                "|",
-              ]}
-              loop={true}
-              cursor
-              cursorStyle="|"
-              typeSpeed={100}
-              deleteSpeed={60}
-              delaySpeed={1500}
-            />
+            <span className="text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-sm">
+              <Typewriter
+                words={["FULL STACK DEVELOPER", "UX/UI DESIGNER"]}
+                loop={true}
+                cursor={false}
+                typeSpeed={100}
+                deleteSpeed={60}
+                delaySpeed={1500}
+              />
+            </span>
+            <span className="text-teal-400 font-light">
+              <Cursor cursorStyle="|" cursorColor="#14b8a6" />
+            </span>
           </motion.h2>
 
           <motion.p
@@ -91,9 +82,9 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            I am studying Software Engineering at Beltei International
-            University, focusing on clean design, development, and data
-            analysis.
+            I am a passionate Full Stack Developer specializing in building
+            modern, scalable web applications with clean design, robust architecture,
+            and seamless user experiences.
           </motion.p>
 
           {/* Social Icons */}
@@ -130,12 +121,6 @@ function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
-            className="absolute inset-0 rounded-xl bg-gradient-to-tr from-blue-400 to-teal-400 opacity-60"
-            initial={{ scale: 0.9, opacity: 0.5 }}
-            animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
-          />
           <motion.img
             src={Profile}
             alt="Sengleang - Software Developer"

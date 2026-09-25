@@ -1,16 +1,21 @@
-import React from "react";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaInstagram,
-  FaFacebook,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTelegram, FaEnvelope } from "react-icons/fa";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
+    {
+      name: "Telegram",
+      icon: <FaTelegram className="w-5 h-5" />,
+      url: "https://t.me/Sengleangyan",
+      hoverColor: "hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50",
+    },
+    {
+      name: "Email",
+      icon: <FaEnvelope className="w-5 h-5" />,
+      url: "mailto:sengleangyan@gmail.com",
+      hoverColor: "hover:text-red-500 hover:border-red-300 hover:bg-red-50",
+    },
     {
       name: "GitHub",
       icon: <FaGithub className="w-5 h-5" />,
@@ -23,24 +28,7 @@ function Footer() {
       url: "https://www.linkedin.com/in/yan-sengleang-614a94277/",
       hoverColor: "hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50",
     },
-    {
-      name: "Facebook",
-      icon: <FaFacebook className="w-5 h-5" />,
-      url: "https://web.facebook.com/yan.sengleang",
-      hoverColor: "hover:text-blue-700 hover:border-blue-300 hover:bg-blue-50",
-    },
-    {
-      name: "Instagram",
-      icon: <FaInstagram className="w-5 h-5" />,
-      url: "https://www.instagram.com/_sengleang/",
-      hoverColor: "hover:text-pink-600 hover:border-pink-300 hover:bg-pink-50",
-    },
-    {
-      name: "Email",
-      icon: <FaEnvelope className="w-5 h-5" />,
-      url: "mailto:sengleangyan@gmail.com",
-      hoverColor: "hover:text-red-500 hover:border-red-300 hover:bg-red-50",
-    },
+   
   ];
 
   return (

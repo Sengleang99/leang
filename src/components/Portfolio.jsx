@@ -1,4 +1,3 @@
-import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiExternalLink, FiArrowRight, FiImage } from "react-icons/fi";
 
@@ -7,6 +6,14 @@ import kasCambodia from "../assets/kascambodia.png";
 import realEstate from "../assets/real-estate.png";
 
 const projectsData = [
+   {
+    id: 3,
+    title: "Kas Advertise Platform",
+    category: "Full Stack",
+    description: "Comprehensive digital advertising management system for launching campaigns, tracking ad reach, and analyzing audience metrics.",
+    image: null,
+    liveUrl: "",
+  },
   {
     id: 1,
     title: "Kas Cambodia",
@@ -23,14 +30,7 @@ const projectsData = [
     image: realEstate,
     liveUrl: "",
   },
-  {
-    id: 3,
-    title: "Kas Advertise Platform",
-    category: "Full Stack",
-    description: "Comprehensive digital advertising management system for launching campaigns, tracking ad reach, and analyzing audience metrics.",
-    image: null,
-    liveUrl: "",
-  },
+ 
 ];
 
 
