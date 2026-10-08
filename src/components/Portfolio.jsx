@@ -4,6 +4,7 @@ import { FiExternalLink, FiArrowRight, FiImage } from "react-icons/fi";
 // Project assets
 import kasCambodia from "../assets/kascambodia.png";
 import realEstate from "../assets/real-estate.png";
+import kasAdvertising from "../assets/kas-advertising.png";
 
 const projectsData = [
    {
@@ -11,8 +12,8 @@ const projectsData = [
     title: "Kas Advertise Platform",
     category: "Full Stack",
     description: "Comprehensive digital advertising management system for launching campaigns, tracking ad reach, and analyzing audience metrics.",
-    image: null,
-    liveUrl: "",
+    image: kasAdvertising,
+    liveUrl: "https://www.kasadvertisting.com",
   },
   {
     id: 1,
