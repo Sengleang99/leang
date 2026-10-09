@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaUniversity } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
@@ -21,21 +20,33 @@ const educationData = [
 
 function Education() {
   return (
-    <section id="education" className="px-6 py-20 bg-white">
+    <section id="education" className="relative px-6 py-24 bg-white overflow-hidden">
+      {/* Background blur */}
+      <div className="pointer-events-none absolute -top-10 left-10 w-72 h-72 bg-blue-50/60 rounded-full blur-3xl -z-10" />
+
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-700 to-blue-900 md:text-5xl">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-block px-3.5 py-1 mb-3 text-xs font-semibold tracking-wider uppercase text-blue-700 bg-blue-50 border border-blue-100 rounded-full shadow-xs"
+          >
+            Academic Foundation
+          </motion.span>
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-700 to-blue-900 md:text-5xl tracking-tight">
             Education
           </h2>
-          <p className="max-w-2xl mx-auto mt-4 text-base md:text-lg text-gray-600">
-            My academic background and qualifications
+          <p className="max-w-2xl mx-auto mt-4 text-base md:text-lg text-gray-600 leading-relaxed">
+            My academic degrees, foundational studies, and specialized curriculum
           </p>
         </motion.div>
 
@@ -44,11 +55,16 @@ function Education() {
           {educationData.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 35, scale: 0.97 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-6 sm:p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300"
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{ y: -4, scale: 1.008 }}
+              className="group relative p-6 sm:p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-blue-500/5 hover:border-blue-200/80 transition-all duration-300"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 {/* Degree & School Info */}
@@ -58,7 +74,7 @@ function Education() {
                   </div>
 
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
                       {item.degree}
                     </h3>
                     <div className="flex items-center gap-2 mt-1.5 text-sm sm:text-base font-semibold text-blue-600">
@@ -69,7 +85,7 @@ function Education() {
                 </div>
 
                 {/* Period Badge */}
-                <span className="inline-block px-4 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 rounded-full w-fit self-start sm:self-auto shadow-xs">
+                <span className="inline-block px-4 py-1.5 text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-100 rounded-full w-fit self-start sm:self-auto shadow-2xs">
                   {item.period}
                 </span>
               </div>
@@ -87,13 +103,14 @@ function Education() {
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {item.highlights.map((highlight, idx) => (
-                      <div
+                      <motion.div
                         key={idx}
+                        whileHover={{ x: 2 }}
                         className="flex items-center gap-2 text-xs sm:text-sm text-gray-700"
                       >
                         <FiCheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
                         <span>{highlight}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
