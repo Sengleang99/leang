@@ -1,4 +1,5 @@
 import { motion, useScroll, useSpring } from "framer-motion";
+import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Contact from "./components/Contact";
@@ -17,6 +18,9 @@ function App() {
 
   return (
     <div className="relative bg-white min-h-screen text-gray-900 selection:bg-blue-500 selection:text-white overflow-x-hidden">
+      {/* Global Interactive Motion Cursor across all components */}
+      <CustomCursor />
+
       {/* Top Scroll Progress Indicator */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-teal-400 origin-left z-50 shadow-sm"

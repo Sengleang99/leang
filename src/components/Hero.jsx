@@ -1,22 +1,136 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTelegram } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { Typewriter, Cursor } from "react-simple-typewriter";
 import Profile from "../assets/photo_2024-09-03_23-25-36.jpg";
 
+// Split text by letter with staggered entry and playful spring shake on hover
+function SplitTextLetters({ text, delay = 0, isGradient = false }) {
+  const words = text.split(" ");
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04,
+        delayChildren: delay,
+      },
+    },
+  };
+
+  const letterChild = {
+    hidden: {
+      opacity: 0,
+      y: 32,
+      scale: 0.8,
+      filter: "blur(4px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring",
+        damping: 18,
+        stiffness: 320,
+      },
+    },
+  };
+
+  return (
+    <motion.span
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="inline-block"
+    >
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              key={charIndex}
+              variants={letterChild}
+              whileHover={{
+                y: -12,
+                rotate: (charIndex % 2 === 0 ? 1 : -1) * 8,
+                scale: 1.15,
+                transition: { type: "spring", stiffness: 450, damping: 10 },
+              }}
+              className={`inline-block cursor-pointer select-none ${
+                isGradient
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800"
+                  : ""
+              }`}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
+      ))}
+    </motion.span>
+  );
+}
+
+// Split text by word with staggered fade-and-rise entry and subtle hover lift
+function SplitTextWords({ text, className = "", delay = 0.5 }) {
+  const words = text.split(" ");
+
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+        delayChildren: delay,
+      },
+    },
+  };
+
+  const wordChild = {
+    hidden: {
+      opacity: 0,
+      y: 16,
+      filter: "blur(2px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  return (
+    <motion.p
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className={className}
+    >
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          variants={wordChild}
+          whileHover={{
+            y: -2,
+            color: "#2563eb",
+            transition: { duration: 0.2 },
+          }}
+          className="inline-block mr-[0.28em] transition-colors duration-200"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.p>
+  );
+}
+
 function Hero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Scroll parallax effects
-  const yContent = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const opacityContent = useTransform(scrollYProgress, [0, 0.75], [1, 0.1]);
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
-
   const socialLinks = [
     {
       icon: <FaTelegram size={19} />,
@@ -46,7 +160,6 @@ function Hero() {
 
   return (
     <div
-      ref={containerRef}
       id="home"
       className="relative px-4 pt-28 pb-16 sm:px-6 md:px-10 lg:px-20 xl:px-32 md:pt-32 md:pb-24 bg-white overflow-hidden"
     >
@@ -70,29 +183,20 @@ function Hero() {
         className="pointer-events-none absolute top-1/3 -right-28 w-[420px] h-[420px] rounded-full bg-gradient-to-bl from-teal-100/50 via-cyan-100/40 to-transparent blur-3xl -z-10"
       />
 
-      <motion.div
-        style={{ y: yContent, opacity: opacityContent }}
-        className="flex flex-col-reverse items-center justify-between gap-12 sm:mt-4 lg:flex-row lg:gap-16"
-      >
+      <div className="flex flex-col-reverse items-center justify-between gap-12 sm:mt-4 lg:flex-row lg:gap-16">
         {/* Text Section */}
         <div className="w-full text-center lg:text-left lg:w-1/2">
-          <motion.h1
-            className="mb-3 font-extrabold text-gray-900 tracking-tight text-[clamp(1.9rem,5.5vw,3.75rem)]"
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Hi, I&apos;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-800">
-              Sengleang
-            </span>
-          </motion.h1>
+          {/* Staggered Letter-by-Letter Headline with Hover Shake */}
+          <h1 className="mb-3 font-extrabold text-gray-900 tracking-tight text-[clamp(1.9rem,5.5vw,3.75rem)] flex flex-wrap justify-center lg:justify-start items-center gap-x-2">
+            <SplitTextLetters text="Hi, I'm" delay={0.1} />
+            <SplitTextLetters text="Sengleang" delay={0.38} isGradient={true} />
+          </h1>
 
           <motion.h2
             className="mb-6 font-bold text-[clamp(1.2rem,4vw,2.5rem)] min-h-[2.6rem] sm:min-h-[3rem] flex items-center justify-center lg:justify-start"
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
             <span className="text-transparent bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 bg-clip-text drop-shadow-xs">
               <Typewriter
@@ -109,16 +213,12 @@ function Hero() {
             </span>
           </motion.h2>
 
-          <motion.p
+          {/* Staggered Word-by-Word Description */}
+          <SplitTextWords
+            text="I am a passionate Full Stack Developer specializing in building modern, scalable web applications with clean design, robust architecture, and seamless user experiences."
             className="mb-8 text-gray-600 text-[clamp(1rem,2vw,1.15rem)] leading-relaxed max-w-xl mx-auto lg:mx-0"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            I am a passionate Full Stack Developer specializing in building
-            modern, scalable web applications with clean design, robust architecture,
-            and seamless user experiences.
-          </motion.p>
+            delay={0.65}
+          />
 
           {/* Social Icons */}
           <motion.div
@@ -179,33 +279,7 @@ function Hero() {
             />
           </motion.div>
         </motion.div>
-      </motion.div>
-
-      {/* Floating Scroll Indicator */}
-      <motion.div
-        style={{ opacity: scrollIndicatorOpacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="hidden md:flex flex-col items-center justify-center mt-12 cursor-pointer text-gray-400 hover:text-blue-600 transition-colors"
-        onClick={() => {
-          const el = document.getElementById("skill");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }}
-      >
-        <span className="text-xs uppercase tracking-widest font-semibold mb-2">Scroll Down</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-9 rounded-full border-2 border-gray-300 flex items-start justify-center p-1"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0], opacity: [1, 0.2, 1] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1.5 h-2 rounded-full bg-blue-600"
-          />
-        </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 }
