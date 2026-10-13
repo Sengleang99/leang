@@ -14,12 +14,12 @@ const experienceData = [
     technologies: ["Next.js", "Express", "Docker", "Redis", "Figma", "PostgreSQL"],
   },
   {
-    title: "Mobile App Developer",
+    title: "Frontend Developer",
     institution: "SamrithEk MFI",
-    year: "September 2025 - December 2026",
+    year: "April 2025 - June 2026",
     type: "Full-Time",
     description:
-      "Developed and maintained mobile financial application features, integrating secure API frameworks, database operations, and intuitive user interfaces.",
+      "Developed and maintained web and mobile internal application features, integrating secure API frameworks, database operations, and intuitive user interfaces.",
     technologies: ["Flutter", "Vue.js", "Magic API", "MySQL", "Figma"],
   },
 ];
